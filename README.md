@@ -2,81 +2,166 @@
 
 ## How to Run the Application
 
-Prerequisites:
-- Java 17
-- Maven
+1. Prerequisites:
+   - Java JDK 17 or later
+   - Maven 3.8.6 or later
 
-Steps:
-1. git clone <repository-url>
-2. cd student-course-registration
-3. mvn spring-boot:run
+2. Build and Run:
+   mvn clean install
+   mvn spring-boot:run
 
-The application will start running at: http://localhost:8080
+3. Access the API:
+   - The application will start on port 8080 by default
+   - API base URL: http://localhost:8080
 
-Sample HTTP Requests to Try with Postman
+## Sample HTTP Requests/Responses
 
-1. Register a Student
+### Course Management
 
-POST /students/register
-Content-Type: application/json
+Create a new course:
+curl -X POST http://localhost:8080/courses \
+-H "Content-Type: application/json" \
+-d '{
+    "code": "CS101",
+    "title": "Introduction to Computer Science",
+    "instructor": "Dr. Smith"
+}'
 
+Response:
 {
-  "name": "Hiruni Dilmika",
-  "email": "hiruni@example.com"
+    "id": 1,
+    "code": "CS101",
+    "title": "Introduction to Computer Science",
+    "instructor": "Dr. Smith"
 }
 
-2. Add a Course
+Get all courses:
+curl -X GET http://localhost:8080/courses
 
-POST /courses/addCourse
-Content-Type: application/json
+Response:
+[
+    {
+        "id": 1,
+        "code": "CS101",
+        "title": "Introduction to Computer Science",
+        "instructor": "Dr. Smith"
+    }
+]
 
+### Student Management
+
+Register a new student:
+curl -X POST http://localhost:8080/students \
+-H "Content-Type: application/json" \
+-d '{
+    "name": "John Doe",
+    "email": "john.doe@example.com"
+}'
+
+Response:
 {
-  "courseCode": "CS101",
-  "title": "Intro to CS",
-  "instructorName": "Dr. Silva"
+    "id": 1,
+    "name": "John Doe",
+    "email": "john.doe@example.com"
 }
 
-3. View All Students
+Register student to course:
+curl -X POST http://localhost:8080/students/1/register/1
 
-GET /students/allStudents
+Response:
+"Student registered to course successfully"
 
-4. View All Courses
+Get registered courses for a student:
+curl -X GET http://localhost:8080/students/1/courses
 
-GET /courses/all
+Response:
+[
+    {
+        "id": 1,
+        "code": "CS101",
+        "title": "Introduction to Computer Science",
+        "instructor": "Dr. Smith"
+    }
+]
 
-5. Register a Student to a Course
+Drop a course:
+curl -X DELETE http://localhost:8080/students/1/drop/1
 
-POST /students/{studentId}/register/{courseId}
+Response:
+"Course dropped successfully"
 
-6. Unregister (Drop) a Course
+## Assumptions
 
-DELETE /students/{studentId}/drop/{courseId}
+1. Unique Constraints:
+   - Course codes must be unique
+   - Student emails must be unique
 
-7. Get Registered Courses for a Student
+2. Registration System:
+   - A student can register for multiple courses
+   - A course can have multiple students registered
+   - Students cannot register for the same course more than once
 
-GET /students/{studentId}/courses
+3. Validation:
+   - All required fields must be provided
+   - Email must be in valid format
+   - Student name must be between 2-100 characters
 
-Assumptions Made
+4. Error Handling:
+   - Appropriate error messages for not found resources
+   - Conflict messages for duplicate registrations
+   - Validation error messages for invalid input
 
-- Email must be unique for each student.
-- Course code must be unique.
-- No seat limits on courses.
-- Integer ID is used as the identifier.
-- Data is stored in-memory (no database).
+## Code Structure
 
-Code Structure
+src/main/java/com/zdata/registration/
+├── controller/            # REST API endpoints
+│   ├── CourseController.java
+│   └── StudentController.java
+├── dto/                   # Data Transfer Objects
+│   ├── CourseRequestDTO.java
+│   ├── CourseResponseDTO.java
+│   ├── StudentRequestDTO.java
+│   └── StudentResponseDTO.java
+├── exception/             # Custom exceptions and handler
+│   ├── ConflictException.java
+│   ├── GlobalExceptionHandler.java
+│   └── NotFoundException.java
+├── model/                 # Domain models
+│   ├── Course.java
+│   ├── Registration.java
+│   └── Student.java
+├── repository/            # Data access layer
+│   ├── CourseRepository.java
+│   ├── RegistrationRepository.java
+│   └── StudentRepository.java
+├── service/               # Business logic
+│   ├── CourseService.java
+│   └── StudentService.java
+├── test/                  # Test classes
+│   ├── CourseControllerTest.java
+│   ├── StudentControllerTest.java
+│   └── StudentCourseRegistrationApplicationTests.java
+└── StudentCourseRegistrationApplication.java  # Main application class
 
-├── controller        // REST controllers handling HTTP requests
-├── service           // Business logic layer
-├── dto               // Data Transfer Objects for requests/responses
-├── model             // Entity/data models
-├── exception         // Global exception handlers
-└── Application.java  // Main Spring Boot application class
+## Test Coverage
 
-Future Improvements
+The application includes unit tests for controllers:
 
-- Add Swagger for API documentation
-- Add pagination for listing courses
-- Add Docker support for easier deployment
+1. CourseControllerTest:
+   - Tests adding courses with valid and invalid inputs
+   - Tests retrieving all courses
+   - Tests duplicate course code scenarios
 
-© 2025 ZDATA Innovations – Internship Assessment Project
+2. StudentControllerTest:
+   - Tests student registration
+   - Tests course registration and dropping
+   - Tests retrieving registered courses
+   - Tests duplicate email scenarios
+
+3. Integration Test:
+   - Basic context loading test
+
+Test cases cover:
+- Success scenarios with proper responses
+- Error scenarios with appropriate exceptions
+- Validation of response status codes and content
