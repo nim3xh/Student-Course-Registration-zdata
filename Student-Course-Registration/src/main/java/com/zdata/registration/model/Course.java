@@ -4,8 +4,9 @@ import java.util.UUID;
 
 public class Course {
     private UUID id;
-    private String name;
-    private String emaill;
+    private String code;
+    private String title;
+    private String instructor;
 
     public UUID getId() {
         return id;
@@ -15,19 +16,27 @@ public class Course {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getCode() {
+        return code;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCode(String code) {
+        this.code = code;
     }
 
-    public String getEmaill() {
-        return emaill;
+    public String getTitle() {
+        return title;
     }
 
-    public void setEmaill(String emaill) {
-        this.emaill = emaill;
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getInstructor() {
+        return instructor;
+    }
+
+    public void setInstructor(String instructor) {
+        this.instructor = instructor;
     }
 }
