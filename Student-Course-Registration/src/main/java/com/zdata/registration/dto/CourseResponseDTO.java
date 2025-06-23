@@ -1,15 +1,14 @@
 package com.zdata.registration.dto;
 
-import java.util.UUID;
 
 public class CourseResponseDTO {
-    private UUID id;
+    private Integer id;
     private String code;
     private String title;
     private String instructor;
 
     // Constructor
-    public CourseResponseDTO(UUID id, String code, String title, String instructor) {
+    public CourseResponseDTO(Integer id, String code, String title, String instructor) {
         this.id = id;
         this.code = code;
         this.title = title;
@@ -17,11 +16,11 @@ public class CourseResponseDTO {
     }
 
     // Getters and Setters
-    public UUID getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

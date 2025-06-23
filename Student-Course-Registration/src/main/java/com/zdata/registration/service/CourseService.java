@@ -8,7 +8,6 @@ import com.zdata.registration.exception.ConflictException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -25,7 +24,6 @@ public class CourseService {
         });
 
         Course course = new Course();
-        course.setId(UUID.randomUUID());
         course.setCode(dto.getCode());
         course.setTitle(dto.getTitle());
         course.setInstructor(dto.getInstructor());

@@ -7,7 +7,7 @@ import java.util.*;
 
 @Repository
 public class CourseRepository {
-    private final Map<UUID, Course> courseMap = new HashMap<>();
+    private final Map<Integer, Course> courseMap = new HashMap<>();
 
     // Finds all courses
     public List<Course> findAll() {
@@ -15,7 +15,7 @@ public class CourseRepository {
     }
 
     // Finds a course by its ID
-    public Optional<Course> findById(UUID id) {
+    public Optional<Course> findById(Integer id) {
         return Optional.ofNullable(courseMap.get(id));
     }
 
@@ -27,13 +27,18 @@ public class CourseRepository {
     }
 
     // Saves a course, either creating or updating
+    private int idCounter = 1;
+
     public Course save(Course course) {
+        if (course.getId() == null) {
+            course.setId(idCounter++);
+        }
         courseMap.put(course.getId(), course);
         return course;
     }
 
     // Deletes a course by its ID
-    public void delete(UUID id) {
+    public void delete(Integer id) {
         courseMap.remove(id);
     }
 

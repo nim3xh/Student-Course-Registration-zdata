@@ -38,7 +38,7 @@ public class StudentRepository {
     }
 
     // Deletes a student by their ID
-    public void delete(UUID id) {
+    public void delete(Integer id) {
         studentMap.remove(id);
     }
 

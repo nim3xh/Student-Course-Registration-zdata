@@ -1,18 +1,16 @@
 package com.zdata.registration.model;
 
-import java.util.UUID;
-
 public class Course {
-    private UUID id;
+    private Integer id;
     private String code;
     private String title;
     private String instructor;
 
-    public UUID getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

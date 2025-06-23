@@ -1,11 +1,10 @@
 package com.zdata.registration.model;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 public class Registration {
     private Integer studentId;
-    private UUID courseId;
+    private Integer courseId;
     private LocalDateTime registeredAt;
 
     public Integer getStudentId() {
@@ -16,11 +15,11 @@ public class Registration {
         this.studentId = studentId;
     }
 
-    public UUID getCourseId() {
+    public Integer getCourseId() {
         return courseId;
     }
 
-    public void setCourseId(UUID courseId) {
+    public void setCourseId(Integer courseId) {
         this.courseId = courseId;
     }
 

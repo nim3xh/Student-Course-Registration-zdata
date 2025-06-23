@@ -16,21 +16,21 @@ public class RegistrationRepository {
     }
 
     // method to delete a registration by studentId and courseId
-    public void delete(Integer studentId, UUID courseId) {
+    public void delete(Integer studentId, Integer courseId) {
         registrations.removeIf(r ->
                 r.getStudentId().equals(studentId) &&
                         r.getCourseId().equals(courseId));
     }
 
     //method to check whether a specific student is already registered for a specific course
-    public boolean exists(Integer studentId, UUID courseId) {
+    public boolean exists(Integer studentId, Integer courseId) {
         return registrations.stream().anyMatch(r ->
                 r.getStudentId().equals(studentId) &&
                         r.getCourseId().equals(courseId));
     }
 
     // method to find all courses registered by a specific student
-    public List<UUID> findCoursesByStudentId(Integer studentId) {
+    public List<Integer> findCoursesByStudentId(Integer studentId) {
         return registrations.stream()
                 .filter(r -> r.getStudentId().equals(studentId))
                 .map(Registration::getCourseId)
