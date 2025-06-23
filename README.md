@@ -162,7 +162,7 @@ src/main/java/com/zdata/registration/
 ├── test/                  # Test classes
 │   ├── CourseControllerTest.java
 │   ├── StudentControllerTest.java
-│   └── StudentCourseRegistrationApplicationTests.java
+│ 
 └── StudentCourseRegistrationApplication.java  # Main application class
 ```
 
