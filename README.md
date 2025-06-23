@@ -42,8 +42,10 @@ Response:
 ```
 
 Get all courses:
-curl -X GET http://localhost:8080/courses
-
+```bash
+GET http://localhost:8080/courses
+```
+```bash
 Response:
 [
     {
@@ -53,33 +55,44 @@ Response:
         "instructor": "Dr. Smith"
     }
 ]
+```
 
 ### Student Management
 
 Register a new student:
-curl -X POST http://localhost:8080/students \
--H "Content-Type: application/json" \
--d '{
+```bash
+POST http://localhost:8080/students
+```
+
+```bash
+{
     "name": "John Doe",
     "email": "john.doe@example.com"
-}'
-
+}
+```
+```bash
 Response:
 {
     "id": 1,
     "name": "John Doe",
     "email": "john.doe@example.com"
 }
+```
 
 Register student to course:
-curl -X POST http://localhost:8080/students/1/register/1
-
+```bash
+POST http://localhost:8080/students/1/register/1
+```
+```bash
 Response:
 "Student registered to course successfully"
+```
 
 Get registered courses for a student:
-curl -X GET http://localhost:8080/students/1/courses
-
+```bash
+GET http://localhost:8080/students/1/courses
+```
+```bash
 Response:
 [
     {
@@ -89,13 +102,15 @@ Response:
         "instructor": "Dr. Smith"
     }
 ]
-
+```
 Drop a course:
-curl -X DELETE http://localhost:8080/students/1/drop/1
-
+```bash
+DELETE http://localhost:8080/students/1/drop/1
+```
+```bash
 Response:
 "Course dropped successfully"
-
+```
 ## Assumptions
 
 1. Unique Constraints:
