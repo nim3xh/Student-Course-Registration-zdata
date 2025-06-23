@@ -31,7 +31,7 @@ POST http://localhost:8080/courses
     "instructor": "Dr. Smith"
 }
 ```
-
+```bash
 Response:
 {
     "id": 1,
@@ -39,6 +39,7 @@ Response:
     "title": "Introduction to Computer Science",
     "instructor": "Dr. Smith"
 }
+```
 
 Get all courses:
 curl -X GET http://localhost:8080/courses
