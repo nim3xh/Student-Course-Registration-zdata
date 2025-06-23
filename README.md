@@ -166,3 +166,15 @@ src/main/java/com/zdata/registration/
 └── StudentCourseRegistrationApplication.java  # Main application class
 ```
 
+## Test Coverage
+1. CourseControllerTest:
+   - Tests adding courses
+   - Tests retrieving all courses
+   - Tests duplicate course code scenarios
+
+2. StudentControllerTest:
+   - Tests student registration
+   - Tests course registration and dropping
+   - Tests retrieving registered courses
+   - Tests duplicate email scenarios
+
