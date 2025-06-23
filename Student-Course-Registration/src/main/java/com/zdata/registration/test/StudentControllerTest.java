@@ -1,5 +1,6 @@
-package com.zdata.registration.controller;
+package com.zdata.registration.test;
 
+import com.zdata.registration.controller.StudentController;
 import com.zdata.registration.dto.*;
 import com.zdata.registration.service.StudentService;
 
@@ -82,4 +83,6 @@ class StudentControllerTest {
         assertEquals(1, result.getBody().size());
         assertEquals("CS101", result.getBody().get(0).getCode());
     }
+
+
 }
