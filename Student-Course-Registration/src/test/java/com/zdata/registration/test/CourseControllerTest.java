@@ -3,6 +3,7 @@ package com.zdata.registration.test;
 import com.zdata.registration.controller.CourseController;
 import com.zdata.registration.dto.CourseRequestDTO;
 import com.zdata.registration.dto.CourseResponseDTO;
+import com.zdata.registration.exception.ConflictException;
 import com.zdata.registration.service.CourseService;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -60,4 +61,21 @@ class CourseControllerTest {
         assertEquals(1, result.getBody().size());
         assertEquals("CS101", result.getBody().get(0).getCode());
     }
+
+    @Test
+    void createCourse_duplicateCode_shouldThrow() {
+        CourseRequestDTO request = new CourseRequestDTO();
+        request.setCode("CS101");
+        request.setTitle("Intro to CS");
+        request.setInstructor("Prof. Fernando");
+
+        when(courseService.addCourse(request)).thenThrow(new ConflictException("Course code already exists."));
+
+        Exception exception = assertThrows(ConflictException.class, () -> {
+            courseController.addCourse(request);
+        });
+
+        assertEquals("Course code already exists.", exception.getMessage());
+    }
+
 }
