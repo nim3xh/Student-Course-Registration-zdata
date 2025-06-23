@@ -1,6 +1,6 @@
 # Student Course Registration System
 
-How to Run the Application
+## How to Run the Application
 
 Prerequisites:
 - Java 17
