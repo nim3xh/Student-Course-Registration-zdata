@@ -148,7 +148,7 @@ src/main/java/com/zdata/registration/
 │   ├── ConflictException.java
 │   ├── GlobalExceptionHandler.java
 │   └── NotFoundException.java
-├── model/                 # Domain models
+├── model/                 # Models
 │   ├── Course.java
 │   ├── Registration.java
 │   └── Student.java
