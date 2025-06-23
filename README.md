@@ -7,10 +7,12 @@
    - Maven 3.8.6 or later
 
 2. Build and Run:
+```bash
    mvn clean install
    mvn spring-boot:run
+```
 
-3. Access the API:
+4. Access the API:
    - The application will start on port 8080 by default
    - API base URL: http://localhost:8080
 
@@ -19,13 +21,16 @@
 ### Course Management
 
 Create a new course:
-curl -X POST http://localhost:8080/courses \
--H "Content-Type: application/json" \
--d '{
+```bash
+POST http://localhost:8080/courses
+```
+```bash
+{
     "code": "CS101",
     "title": "Introduction to Computer Science",
     "instructor": "Dr. Smith"
-}'
+}
+```
 
 Response:
 {
