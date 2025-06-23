@@ -2,6 +2,7 @@ package com.zdata.registration.test;
 
 import com.zdata.registration.controller.StudentController;
 import com.zdata.registration.dto.*;
+import com.zdata.registration.exception.ConflictException;
 import com.zdata.registration.service.StudentService;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -84,5 +85,19 @@ class StudentControllerTest {
         assertEquals("CS101", result.getBody().get(0).getCode());
     }
 
+    @Test
+    void createStudent_duplicateEmail_shouldThrow() {
+        StudentRequestDTO request = new StudentRequestDTO();
+        request.setName("Nimesh Rangana");
+        request.setEmail("nimesh@example.com");
 
+        when(studentService.createStudent(request))
+                .thenThrow(new ConflictException("Email already registered."));
+
+        ConflictException exception = assertThrows(ConflictException.class, () -> {
+            studentController.registerStudent(request);
+        });
+
+        assertEquals("Email already registered.", exception.getMessage());
+    }
 }
