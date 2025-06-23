@@ -113,7 +113,7 @@ Response:
 
 ## Code Structure
 
-src/main/java/com/zdata/registration/
+`src/main/java/com/zdata/registration/
 ├── controller/            # REST API endpoints
 │   ├── CourseController.java
 │   └── StudentController.java
@@ -141,7 +141,7 @@ src/main/java/com/zdata/registration/
 │   ├── CourseControllerTest.java
 │   ├── StudentControllerTest.java
 │   └── StudentCourseRegistrationApplicationTests.java
-└── StudentCourseRegistrationApplication.java  # Main application class
+└── StudentCourseRegistrationApplication.java  # Main application class`
 
 ## Test Coverage
 
