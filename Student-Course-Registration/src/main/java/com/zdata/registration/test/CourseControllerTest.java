@@ -1,5 +1,6 @@
-package com.zdata.registration.controller;
+package com.zdata.registration.test;
 
+import com.zdata.registration.controller.CourseController;
 import com.zdata.registration.dto.CourseRequestDTO;
 import com.zdata.registration.dto.CourseResponseDTO;
 import com.zdata.registration.service.CourseService;
