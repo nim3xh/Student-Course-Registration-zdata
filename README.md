@@ -28,7 +28,7 @@ POST http://localhost:8080/courses
 {
     "code": "CS101",
     "title": "Introduction to Computer Science",
-    "instructor": "Dr. Smith"
+    "instructor": "Dr. Subash Jayasinghe"
 }
 ```
 ```bash
@@ -37,7 +37,7 @@ Response:
     "id": 1,
     "code": "CS101",
     "title": "Introduction to Computer Science",
-    "instructor": "Dr. Smith"
+    "instructor": "Dr. Subash Jayasinghe"
 }
 ```
 
@@ -52,7 +52,7 @@ Response:
         "id": 1,
         "code": "CS101",
         "title": "Introduction to Computer Science",
-        "instructor": "Dr. Smith"
+        "instructor": "Dr. Subash Jayasinghe"
     }
 ]
 ```
@@ -66,16 +66,16 @@ POST http://localhost:8080/students
 
 ```bash
 {
-    "name": "John Doe",
-    "email": "john.doe@example.com"
+    "name": "Nimesh Jayaweera",
+    "email": "nim3xh@example.com"
 }
 ```
 ```bash
 Response:
 {
     "id": 1,
-    "name": "John Doe",
-    "email": "john.doe@example.com"
+    "name": "Nimesh Jayaweera",
+    "email": "nim3xh@example.com"
 }
 ```
 
@@ -99,7 +99,7 @@ Response:
         "id": 1,
         "code": "CS101",
         "title": "Introduction to Computer Science",
-        "instructor": "Dr. Smith"
+        "instructor": "Dr. Subash Jayasinghe"
     }
 ]
 ```
@@ -165,27 +165,4 @@ src/main/java/com/zdata/registration/
 │   └── StudentCourseRegistrationApplicationTests.java
 └── StudentCourseRegistrationApplication.java  # Main application class
 ```
-    
 
-## Test Coverage
-
-The application includes unit tests for controllers:
-
-1. CourseControllerTest:
-   - Tests adding courses with valid and invalid inputs
-   - Tests retrieving all courses
-   - Tests duplicate course code scenarios
-
-2. StudentControllerTest:
-   - Tests student registration
-   - Tests course registration and dropping
-   - Tests retrieving registered courses
-   - Tests duplicate email scenarios
-
-3. Integration Test:
-   - Basic context loading test
-
-Test cases cover:
-- Success scenarios with proper responses
-- Error scenarios with appropriate exceptions
-- Validation of response status codes and content
