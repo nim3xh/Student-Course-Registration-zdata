@@ -112,7 +112,7 @@ Response:
    - Validation error messages for invalid input
 
 ## Code Structure
-
+    
 `src/main/java/com/zdata/registration/
 ├── controller/            # REST API endpoints
 │   ├── CourseController.java
@@ -142,6 +142,7 @@ Response:
 │   ├── StudentControllerTest.java
 │   └── StudentCourseRegistrationApplicationTests.java
 └── StudentCourseRegistrationApplication.java  # Main application class`
+    
 
 ## Test Coverage
 
