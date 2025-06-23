@@ -7,7 +7,7 @@ import java.util.*;
 
 @Repository
 public class StudentRepository {
-    private final Map<UUID, Student> studentMap = new HashMap<>();
+    private final Map<Integer, Student> studentMap = new HashMap<>();
 
     // Finds all students
     public List<Student> findAll() {
@@ -15,7 +15,7 @@ public class StudentRepository {
     }
 
     // Finds a student by ID
-    public Optional<Student> findById(UUID id) {
+    public Optional<Student> findById(Integer id) {
         return Optional.ofNullable(studentMap.get(id));
     }
 
@@ -27,7 +27,12 @@ public class StudentRepository {
     }
 
     // Saves a student, either creating or updating
+    private int idCounter = 1;
+
     public Student save(Student student) {
+        if (student.getId() == null) {
+            student.setId(idCounter++);
+        }
         studentMap.put(student.getId(), student);
         return student;
     }

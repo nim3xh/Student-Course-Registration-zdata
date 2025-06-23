@@ -26,19 +26,19 @@ public class StudentController {
     }
 
     @PostMapping("/{studentId}/register/{courseId}")
-    public ResponseEntity<String> registerToCourse(@PathVariable UUID studentId, @PathVariable UUID courseId) {
+    public ResponseEntity<String> registerToCourse(@PathVariable Integer studentId, @PathVariable UUID courseId) {
         studentService.registerStudentToCourse(studentId, courseId);
         return ResponseEntity.ok("Student registered to course successfully");
     }
 
     @DeleteMapping("/{studentId}/drop/{courseId}")
-    public ResponseEntity<String> dropCourse(@PathVariable UUID studentId, @PathVariable UUID courseId) {
+    public ResponseEntity<String> dropCourse(@PathVariable Integer studentId, @PathVariable UUID courseId) {
         studentService.dropCourse(studentId, courseId);
         return ResponseEntity.ok("Course dropped successfully");
     }
 
     @GetMapping("/{studentId}/courses")
-    public ResponseEntity<List<CourseResponseDTO>> getRegisteredCourses(@PathVariable UUID studentId) {
+    public ResponseEntity<List<CourseResponseDTO>> getRegisteredCourses(@PathVariable Integer studentId) {
         return ResponseEntity.ok(studentService.getRegisteredCourses(studentId));
     }
 }

@@ -35,7 +35,6 @@ public class StudentService {
         });
 
         Student student = new Student();
-        student.setId(UUID.randomUUID());
         student.setName(dto.getName());
         student.setEmail(dto.getEmail());
 
@@ -43,7 +42,7 @@ public class StudentService {
         return new StudentResponseDTO(student.getId(), student.getName(), student.getEmail());
     }
 
-    public void registerStudentToCourse(UUID studentId, UUID courseId) {
+    public void registerStudentToCourse(Integer studentId, UUID courseId) {
         Student student = studentRepo.findById(studentId)
                 .orElseThrow(() -> new NotFoundException("Student not found"));
 
@@ -62,7 +61,7 @@ public class StudentService {
         registrationRepo.save(registration);
     }
 
-    public void dropCourse(UUID studentId, UUID courseId) {
+    public void dropCourse(Integer studentId, UUID courseId) {
         if (!registrationRepo.exists(studentId, courseId)) {
             throw new ConflictException("Student is not registered in this course.");
         }
@@ -70,7 +69,7 @@ public class StudentService {
         registrationRepo.delete(studentId, courseId);
     }
 
-    public List<CourseResponseDTO> getRegisteredCourses(UUID studentId) {
+    public List<CourseResponseDTO> getRegisteredCourses(Integer studentId) {
         studentRepo.findById(studentId)
                 .orElseThrow(() -> new NotFoundException("Student not found"));
 

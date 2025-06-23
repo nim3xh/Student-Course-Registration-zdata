@@ -1,25 +1,23 @@
 package com.zdata.registration.dto;
 
-import java.util.UUID;
-
 public class StudentResponseDTO {
-    private UUID id;
+    private Integer id;
     private String name;
     private String email;
 
     // constructor, getters, setters
-    public StudentResponseDTO(UUID id, String name, String email) {
+    public StudentResponseDTO(Integer id, String name, String email) {
         this.id = id;
         this.name = name;
         this.email = email;
     }
 
     //getters and setters
-    public UUID getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
